@@ -12,10 +12,11 @@ import java.util.*;
 
 public class oreevent implements Listener {
 
-
     List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
     ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
 
+    public int low = 1;
+    public int high = 100;
     Material legacywater = Utils.water;
     Material legacylava = Utils.lava;
     Random random = Utils.random;
@@ -50,13 +51,24 @@ public class oreevent implements Listener {
 
                             Material[] blocks = new Material[ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks").size()];
                             List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
+                            boolean vaziat = false;
+                            while (!vaziat) {
+                                String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
+                                int randomgeneratednumber = random.nextInt(high - low) + low;
+                                String gtsmaterial = thatblock.split(":")[0];
+                                int percent = Integer.parseInt(thatblock.split(":")[1]);
+
+                                if (randomgeneratednumber <= percent) {
+
+                                    vaziat = true;
+                                    e.setCancelled(true);
+
+                                    e.getToBlock().setType(Material.matchMaterial(gtsmaterial));
+                                }
+                            }
 
 
-                            String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
 
-                            e.setCancelled(true);
-
-                            e.getToBlock().setType(Material.matchMaterial(thatblock));
 
                         }
 
