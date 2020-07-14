@@ -70,11 +70,10 @@ generators-settings:
     REDSTONE_BLOCK:
       required-island-level: 0
       blocks:
-        - REDSTONE_ORE
-        - DIAMOND_BLOCK
-        - BEDROCK
-#        - GRASS_BLOCK
-
+        - REDSTONE_ORE: 10
+        - DIAMOND_BLOCK: 90
+        - BEDROCK: 10
+#        - GRASS_BLOCK (1.13+) | -GRASS (1.8+)
 
 
 

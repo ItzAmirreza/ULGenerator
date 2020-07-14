@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -15,7 +16,7 @@ public class Utils {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public static String pluginprefix = "&8[&eUL&bGenerator&8] ";
+    public static String pluginprefix = "&8[&6UL&9Generator&8] ";
 
 
      public static void findSkyBlockPlugin() {
@@ -57,5 +58,8 @@ public class Utils {
 
     public static Material water = Material.matchMaterial(isNewVersion() ? "WATER" : "STATIONARY_WATER");
     public static Material lava = Material.matchMaterial(isNewVersion() ? "LAVA" : "STATIONARY_LAVA");
+
+
+    public static Random random = new Random();
 
 }
