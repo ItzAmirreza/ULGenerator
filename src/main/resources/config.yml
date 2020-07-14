@@ -14,7 +14,7 @@
 
 #Welcome to Under Lava Generator Plugin Configuration, The Configuration file is so simple and simple-made for
 #everyone to use. You just need to put the CORRECT block value to work. Otherwise it will print out with an error,
-#But do not panic! I have put spigot block ids link, so you can easily config without a pain. Also each part in the configuration
+#But do not panic! I have put spigot block names link, so you can easily config without a pain. Also each part in the configuration
 #fully explained and well-made.
 #Remember, Feel free to request new features or report bugs to fix. You can contact me through Discord and Telegram.
 #I don't have discord community yet - But if other developers like to work and contribute just contact me.
@@ -59,21 +59,23 @@ generators-settings:
       #You have to disable FabledSkyblock ore generations to stop some conflicts
       required-island-level: 100
       blocks:
-        #It/These can be only blocks, otherwise it wont work... Blocks will have equal chance of generating
-        - IRON_ORE
-        - DIAMOND_ORE
-        - EMERALD_ORE
-        - COAL_ORE
-        #- WOOL
-        #- COBBLESTONE
+        #It/These can be only blocks, otherwise it wont work... Blocks will have a change of generating, between 1 - 100
+        #You may ask how these percentages work, basically for each ore, a random number will generate between 0 - 100, and we will check if percentage is bigger or smaller than random generated number.
+        #- Material:Percentage <---- Percentage must be between 1 - 100
+        - IRON_ORE:5
+        - DIAMOND_ORE:10
+        - EMERALD_ORE:100
+        - COAL_ORE:90
+        #- WOOL:1
+        #- COBBLESTONE:50
 
     REDSTONE_BLOCK:
       required-island-level: 0
       blocks:
-        - REDSTONE_ORE: 10
-        - DIAMOND_BLOCK: 90
-        - BEDROCK: 10
-#        - GRASS_BLOCK (1.13+) | -GRASS (1.8+)
+        - REDSTONE_ORE:10
+        - DIAMOND_BLOCK:90
+        - BEDROCK:10
+#        - GRASS_BLOCK:100 (1.13+) | -GRASS:100 (1.8+)
 
 
 

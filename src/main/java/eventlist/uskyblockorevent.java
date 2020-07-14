@@ -27,7 +27,8 @@ public class uskyblockorevent implements Listener {
     Random random = Utils.random;
     Material legacywater = Utils.water;
     Material legacylava = Utils.lava;
-
+    public int low = 1;
+    public int high = 100;
     List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
     ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
     String perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
@@ -61,14 +62,21 @@ public class uskyblockorevent implements Listener {
 
                                         Material[] blocks = new Material[ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks").size()];
                                         List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
+                                        boolean vaziat = false;
+                                        while (!vaziat) {
+                                            String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
+                                            int randomgeneratednumber = random.nextInt(high - low) + low;
+                                            String gtsmaterial = thatblock.split(":")[0];
+                                            int percent = Integer.parseInt(thatblock.split(":")[1]);
 
+                                            if (randomgeneratednumber <= percent) {
 
-                                        String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
+                                                vaziat = true;
+                                                e.setCancelled(true);
 
-
-                                        e.setCancelled(true);
-
-                                        e.getToBlock().setType(Material.matchMaterial(thatblock));
+                                                e.getToBlock().setType(Material.matchMaterial(gtsmaterial));
+                                            }
+                                        }
 
                                     }
 
