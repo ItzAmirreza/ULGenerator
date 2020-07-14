@@ -1,5 +1,5 @@
 package ir.deadlight.ulgenerator;
-import commands.reloadcommand;
+import commands.ulgCommand;
 import org.bukkit.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,7 +31,7 @@ public final class ULGenerator extends JavaPlugin {
 
             //Checkin for plugins
             Utils.findSkyBlockPlugin();
-            getServer().getPluginCommand("ulg").setExecutor(new reloadcommand());
+            getServer().getPluginCommand("ulg").setExecutor(new ulgCommand());
             getServer().getConsoleSender().sendMessage(Utils.color(Utils.pluginprefix + "&aULGenerator Has Been Enabled. | Authored & Coded By &dDead_Light &a<3"));
 
 
@@ -44,7 +44,7 @@ public final class ULGenerator extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        getServer().getConsoleSender().sendMessage(Utils.color(Utils.pluginprefix + "&aULGenerator Has Been Enabled. | Authored & Coded By &dDead_Light &a<3"));
+        getServer().getConsoleSender().sendMessage(Utils.color(Utils.pluginprefix + "&cULGenerator Has Been Disabled. | Authored & Coded By &dDead_Light &a<3"));
         getServer().getConsoleSender().sendMessage(Utils.color(Utils.pluginprefix + "Integration with Skyblock plugin Disabled"));
 
     }

@@ -24,7 +24,7 @@ public class uskyblockorevent implements Listener {
         api = (uSkyBlockAPI) Bukkit.getPluginManager().getPlugin("uSkyBlock");
     }
 
-
+    Random random = Utils.random;
     Material legacywater = Utils.water;
     Material legacylava = Utils.lava;
 
@@ -63,10 +63,7 @@ public class uskyblockorevent implements Listener {
                                         List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
 
 
-                                        Random rand = new Random();
-
-
-                                        String thatblock = listofblocks.get(rand.nextInt(listofblocks.size()));
+                                        String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
 
 
                                         e.setCancelled(true);
