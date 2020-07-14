@@ -1,0 +1,10 @@
+name: ULGenerator
+version: ${project.version}
+main: ir.deadlight.ulgenerator.ULGenerator
+api-version: 1.13
+authors: [Dead_Light]
+description: New Generation Generator System - Coded By Dead_Light
+softdepend: [ASkyBlock, uSkyBlock, BentoBox, SuperiorSkyblock2, FabledSkyBlock]
+commands:
+  ulg:
+    description: Commands Related to The Under Lava Plugin generator

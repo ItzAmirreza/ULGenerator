@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.gitlab.Songoda:fabledskyblock:6f0a4a45ed">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gitlab/Songoda/fabledskyblock/6f0a4a45ed/fabledskyblock-6f0a4a45ed.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gitlab/Songoda/fabledskyblock/6f0a4a45ed/fabledskyblock-6f0a4a45ed-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gitlab/Songoda/fabledskyblock/6f0a4a45ed/fabledskyblock-6f0a4a45ed-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

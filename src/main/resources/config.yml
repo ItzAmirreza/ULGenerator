@@ -1,0 +1,81 @@
+
+
+#██╗░░░██╗██╗░░░░░  ░░░░░░  ░██████╗░███████╗███╗░░██╗███████╗██████╗░░█████╗░████████╗░█████╗░██████╗░
+#██║░░░██║██║░░░░░  ░░░░░░  ██╔════╝░██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗
+#██║░░░██║██║░░░░░  █████╗  ██║░░██╗░█████╗░░██╔██╗██║█████╗░░██████╔╝███████║░░░██║░░░██║░░██║██████╔╝
+#██║░░░██║██║░░░░░  ╚════╝  ██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║░░░██║░░░██║░░██║██╔══██╗
+#╚██████╔╝███████╗  ░░░░░░  ╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║
+#░╚═════╝░╚══════╝  ░░░░░░  ░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝
+
+
+#░█▀▀▄ █──█ 　 ░█▀▀▄ █▀▀ █▀▀█ █▀▀▄ ░█─── ─▀─ █▀▀▀ █──█ ▀▀█▀▀
+#░█▀▀▄ █▄▄█ 　 ░█─░█ █▀▀ █▄▄█ █──█ ░█─── ▀█▀ █─▀█ █▀▀█ ──█──
+#░▀▀▀─ ▄▄▄█ 　 ░█▄▄▀ ▀▀▀ ▀──▀ ▀▀▀─ ░█▄▄█ ▀▀▀ ▀▀▀▀ ▀──▀ ──▀──
+
+#Welcome to Under Lava Generator Plugin Configuration, The Configuration file is so simple and simple-made for
+#everyone to use. You just need to put the CORRECT block value to work. Otherwise it will print out with an error,
+#But do not panic! I have put spigot block ids link, so you can easily config without a pain. Also each part in the configuration
+#fully explained and well-made.
+#Remember, Feel free to request new features or report bugs to fix. You can contact me through Discord and Telegram.
+#I don't have discord community yet - But if other developers like to work and contribute just contact me.
+#It is more nice if you even donate me 1$, so much appreciated...
+#Paypal: https://www.paypal.me/itzamirreza
+#Discord: Dead_Light#1711
+#Telegram: @ItzDead
+#List of block names that you need to use for 1.13 until newest versions: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#List of block names that you need to use for 1.8 - 1.12.2 (before 1.13): https://helpch.at/docs/1.12.2/index.html?org/bukkit/Material.html
+
+#----------V------------Config starts from here!------------V--------------#
+
+#Plugin start enabling on startup - duo you can just remove or disable the plugin from other ways...
+enable-plugin-on-startup: true
+
+#The worlds that plugin does not work in.
+#You can see default example and add your worlds
+disabled-worlds:
+  #- world
+  #- world_nether
+  - world_the_end
+  #- AnyNameThatYourWorldHas
+
+#Admin Commands Permission | DEFAULT: ulg.admin
+#The default is ulg.admin but you can easily change it if it does make incompatibility with other plugins.
+admin-permission: "ulg.admin"
+
+#Generators part
+generators-settings:
+  #if you set permission to none, players won't need permission to use these generators | default is none | Ex: ulg.use
+  permission: "none"
+  generators:
+  #Now you can add-remove your custom generators! Enjoy and PLEASE READ DESCRIPTIONS
+  #Name of the block which is under the lava
+  #be careful when i say under the lava, it means exactly the one which interact with water! (As it shows in gifs on spigot page)
+  #Also NOTICE that Vertical Generators ARE NOT SUPPORTED till this version, but we will have plans to develop for newer versions.
+    EMERALD_BLOCK:
+      #The island level which is required for this generator. Right now, we support 5 island plugins:
+      #FabledSkyBlock - BentoBox - ASkyBlock - uSkyBlock - SuperiorSkyblock2
+      #Notes:
+      #You need to install Levels Addon For BentoBox to work!
+      #You have to disable FabledSkyblock ore generations to stop some conflicts
+      required-island-level: 100
+      blocks:
+        #It/These can be only blocks, otherwise it wont work... Blocks will have equal chance of generating
+        - IRON_ORE
+        - DIAMOND_ORE
+        - EMERALD_ORE
+        - COAL_ORE
+        #- WOOL
+        #- COBBLESTONE
+
+    REDSTONE_BLOCK:
+      required-island-level: 0
+      blocks:
+        - REDSTONE_ORE
+        - DIAMOND_BLOCK
+        - BEDROCK
+#        - GRASS_BLOCK
+
+
+
+
+#Hope you enjoy this plugin, Remember your votings on my SPIGOTMC page is IMPORTANT to me, and i'll try to answer you ASAP.
