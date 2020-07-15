@@ -24,7 +24,8 @@
 #Telegram: @ItzDead
 #List of block names that you need to use for 1.13 until newest versions: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 #List of block names that you need to use for 1.8 - 1.12.2 (before 1.13): https://helpch.at/docs/1.12.2/index.html?org/bukkit/Material.html
-
+#List of biome names that you may need to use for 1.13 -> 1.16: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/block/Biome.html
+#List of biomes names that you may need to use for 1.8 -> 1.12.2: https://neolumia.github.io/spigot-docs/1.12.2/org/bukkit/block/Biome.html
 #----------V------------Config starts from here!------------V--------------#
 
 #Plugin start enabling on startup - duo you can just remove or disable the plugin from other ways...
@@ -58,6 +59,9 @@ generators-settings:
       #You need to install Levels Addon For BentoBox to work!
       #You have to disable FabledSkyblock ore generations to stop some conflicts
       required-island-level: 100
+      #The biome which is required to let generation happen | default is false | List of BIOMEs provided in header of config
+      #Example: required-biome: BEACHES
+      required-biome: false
       blocks:
         #It/These can be only blocks, otherwise it wont work... Blocks will have a change of generating, between 1 - 100
         #You may ask how these percentages work, basically for each ore, a random number will generate between 0 - 100, and we will check if percentage is bigger or smaller than random generated number.
@@ -71,6 +75,7 @@ generators-settings:
 
     REDSTONE_BLOCK:
       required-island-level: 0
+      required-biome: false
       blocks:
         - REDSTONE_ORE:10
         - DIAMOND_BLOCK:90

@@ -1,10 +1,19 @@
 package ir.deadlight.ulgenerator;
 
+import com.sk89q.worldedit.util.YAMLConfiguration;
 import eventlist.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.FileConfigurationOptions;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -61,5 +70,38 @@ public class Utils {
 
 
     public static Random random = new Random();
+
+
+
+    public static void checkForNewConfigs() {
+
+
+        ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
+        configurationsection.getKeys(false).forEach(key -> {
+
+            YamlConfiguration configyml = new YamlConfiguration();
+            try {
+                configyml.load(ULGenerator.getInstance().getDataFolder() + File.separator + "config.yml");
+                String thething = configyml.getString("generators-settings.generators." + key + "." + "required-biome");
+                if (thething == null) {
+                    File config = new File(ULGenerator.getInstance().getDataFolder() + File.separator + "config.yml");
+
+                    try {
+                        configyml.load(ULGenerator.getInstance().getDataFolder() + File.separator + "config.yml");
+                        configyml.set("generators-settings.generators." + key + "." + "required-biome", "false");
+                        configyml.save(config);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+
+        });
+
+    }
+
 
 }

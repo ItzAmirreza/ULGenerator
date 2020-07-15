@@ -33,7 +33,7 @@ public final class ULGenerator extends JavaPlugin {
             Utils.findSkyBlockPlugin();
             getServer().getPluginCommand("ulg").setExecutor(new ulgCommand());
             getServer().getConsoleSender().sendMessage(Utils.color(Utils.pluginprefix + "&aULGenerator Has Been Enabled. | Authored & Coded By &dDead_Light &a<3"));
-
+            Utils.checkForNewConfigs();
 
         }
 
