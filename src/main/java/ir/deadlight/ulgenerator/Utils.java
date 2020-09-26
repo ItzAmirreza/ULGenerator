@@ -15,6 +15,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -102,6 +103,20 @@ public class Utils {
         });
 
     }
+
+    public static List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
+    public static ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
+    public static String perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
+    public static void reloadCF() {
+
+        worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
+        configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
+        perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
+
+    }
+
+
+
 
 
 }

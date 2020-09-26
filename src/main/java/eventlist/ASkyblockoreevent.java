@@ -31,14 +31,13 @@ public class ASkyblockoreevent implements Listener {
     Material legacywater = Utils.water;
     Material legacylava = Utils.lava;
     Random random = Utils.random;
-    List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
-    ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
-    String perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
+
 
 
     @EventHandler
     public void onhappen(BlockFromToEvent e) {
 
+        List<String> worldslist = Utils.worldslist;
         if (!(worldslist.contains(e.getBlock().getWorld().getName()))) {
             Location happenloc = e.getBlock().getLocation();
             Material block1 = e.getBlock().getType();
@@ -50,12 +49,13 @@ public class ASkyblockoreevent implements Listener {
             Location waterlocation3 = new Location(e.getToBlock().getWorld(), e.getToBlock().getLocation().getBlockX(), e.getToBlock().getLocation().getBlockY(), e.getToBlock().getLocation().getBlockZ() - 1);
             Location waterlocation4 = new Location(e.getToBlock().getWorld(), e.getToBlock().getLocation().getBlockX(), e.getToBlock().getLocation().getBlockY(), e.getToBlock().getLocation().getBlockZ() + 1);
             try {
+                String perm = Utils.perm;
                 UUID islandowneruuid = api.getOwner(e.getToBlock().getLocation());
                 Player islandowner = Bukkit.getPlayer(islandowneruuid);
                 if (islandowner.hasPermission(perm) || perm == "none") {
                     int islandlevel = api.getIslandLevel(islandowneruuid);
                     Location blockl = new Location(e.getBlock().getWorld(), block1location.getBlockX(), block1location.getBlockY() - 1, block1location.getBlockZ());
-
+                    ConfigurationSection configurationsection = Utils.configurationsection;
                     configurationsection.getKeys(false).forEach(key -> {
                         if (key.equalsIgnoreCase(blockl.getBlock().getType().toString())) {
 

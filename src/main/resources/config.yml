@@ -61,6 +61,7 @@ generators-settings:
       required-island-level: 100
       #The biome which is required to let generation happen | default is false | List of BIOMEs provided in header of config
       #Example: required-biome: BEACHES
+      #Names are provided in header
       required-biome: false
       blocks:
         #It/These can be only blocks, otherwise it wont work... Blocks will have a change of generating, between 1 - 100
@@ -75,7 +76,7 @@ generators-settings:
 
     REDSTONE_BLOCK:
       required-island-level: 0
-      required-biome: false
+      required-biome: PLAINS
       blocks:
         - REDSTONE_ORE:10
         - DIAMOND_BLOCK:90

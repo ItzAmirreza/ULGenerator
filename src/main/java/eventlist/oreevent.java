@@ -13,8 +13,7 @@ import java.util.*;
 
 public class oreevent implements Listener {
 
-    List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
-    ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
+
 
     public int low = 1;
     public int high = 100;
@@ -36,12 +35,14 @@ public class oreevent implements Listener {
         Location waterlocation2 = new Location(e.getToBlock().getWorld(), e.getToBlock().getLocation().getBlockX() - 1, e.getToBlock().getLocation().getBlockY(), e.getToBlock().getLocation().getBlockZ());
         Location waterlocation3 = new Location(e.getToBlock().getWorld(), e.getToBlock().getLocation().getBlockX(), e.getToBlock().getLocation().getBlockY(), e.getToBlock().getLocation().getBlockZ() - 1);
         Location waterlocation4 = new Location(e.getToBlock().getWorld(), e.getToBlock().getLocation().getBlockX(), e.getToBlock().getLocation().getBlockY(), e.getToBlock().getLocation().getBlockZ() + 1);
-
+        List<String> worldslist = Utils.worldslist;
+        ConfigurationSection configurationsection = Utils.configurationsection;
         if (!(worldslist.contains(e.getBlock().getWorld().getName()))) {
 
 
 
             Location blockl = new Location(e.getBlock().getWorld(), block1location.getBlockX(), block1location.getBlockY() - 1, block1location.getBlockZ());
+
 
             configurationsection.getKeys(false).forEach(key -> {
                 if (key.equalsIgnoreCase(blockl.getBlock().getType().toString())) {

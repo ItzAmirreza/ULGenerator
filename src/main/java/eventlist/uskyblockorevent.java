@@ -30,11 +30,10 @@ public class uskyblockorevent implements Listener {
     Material legacylava = Utils.lava;
     public int low = 1;
     public int high = 100;
-    List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
-    ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
-    String perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
+
     @EventHandler
     public void onhappen(BlockFromToEvent e) {
+        List<String> worldslist = Utils.worldslist;
 
         if (!(worldslist.contains(e.getBlock().getWorld().getName()))) {
             Location happenloc = e.getBlock().getLocation();
@@ -49,10 +48,12 @@ public class uskyblockorevent implements Listener {
             try {
                 UUID islandowneruuid = Bukkit.getPlayer(api.getIslandInfo(e.getToBlock().getLocation()).getLeader()).getUniqueId();
                 Player islandowner = Bukkit.getPlayer(islandowneruuid);
+
+                String perm = Utils.perm;
                 if (islandowner.hasPermission(perm) || perm == "none") {
                     double islandlevel = api.getIslandLevel(Bukkit.getPlayer(islandowneruuid));
                     Location blockl = new Location(e.getBlock().getWorld(), block1location.getBlockX(), block1location.getBlockY() - 1, block1location.getBlockZ());
-
+                    ConfigurationSection configurationsection = Utils.configurationsection;
                     configurationsection.getKeys(false).forEach(key -> {
                         if (key.equalsIgnoreCase(blockl.getBlock().getType().toString())) {
 
