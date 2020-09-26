@@ -2,6 +2,7 @@ package eventlist;
 import ir.deadlight.ulgenerator.Utils;
 import ir.deadlight.ulgenerator.ULGenerator;
 import org.bukkit.*;
+import org.bukkit.block.Biome;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,24 +49,55 @@ public class oreevent implements Listener {
                     if (block1 == Material.LAVA || block1 == legacylava) {
 
                         if (waterlocation1.getBlock().getType() == legacywater || waterlocation2.getBlock().getType() == legacywater || waterlocation3.getBlock().getType() == legacywater || waterlocation4.getBlock().getType() == legacywater) {
+                            String requiredb = ULGenerator.getInstance().getConfig().getString("generators-settings.generators." + key + "." + "required-biome");
+                            if (requiredb.equalsIgnoreCase("false")) {
 
-                            Material[] blocks = new Material[ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks").size()];
-                            List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
-                            boolean vaziat = false;
-                            while (!vaziat) {
-                                String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
-                                int randomgeneratednumber = random.nextInt(high - low) + low;
-                                String gtsmaterial = thatblock.split(":")[0];
-                                int percent = Integer.parseInt(thatblock.split(":")[1]);
+                                Material[] blocks = new Material[ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks").size()];
+                                List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
+                                boolean vaziat = false;
+                                while (!vaziat) {
+                                    String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
+                                    int randomgeneratednumber = random.nextInt(high - low) + low;
+                                    String gtsmaterial = thatblock.split(":")[0];
+                                    int percent = Integer.parseInt(thatblock.split(":")[1]);
 
-                                if (randomgeneratednumber <= percent) {
+                                    if (randomgeneratednumber <= percent) {
 
-                                    vaziat = true;
-                                    e.setCancelled(true);
+                                        vaziat = true;
+                                        e.setCancelled(true);
 
-                                    e.getToBlock().setType(Material.matchMaterial(gtsmaterial));
+                                        e.getToBlock().setType(Material.matchMaterial(gtsmaterial));
+                                    }
                                 }
+
+
+                            } else {
+                                if (requiredb == null) return;
+                                if (Biome.valueOf(requiredb) == e.getBlock().getBiome()) {
+
+                                    Material[] blocks = new Material[ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks").size()];
+                                    List<String> listofblocks = ULGenerator.getInstance().getConfig().getStringList("generators-settings.generators." + key + "." + "blocks");
+                                    boolean vaziat = false;
+                                    while (!vaziat) {
+                                        String thatblock = listofblocks.get(random.nextInt(listofblocks.size()));
+                                        int randomgeneratednumber = random.nextInt(high - low) + low;
+                                        String gtsmaterial = thatblock.split(":")[0];
+                                        int percent = Integer.parseInt(thatblock.split(":")[1]);
+
+                                        if (randomgeneratednumber <= percent) {
+
+                                            vaziat = true;
+                                            e.setCancelled(true);
+
+                                            e.getToBlock().setType(Material.matchMaterial(gtsmaterial));
+                                        }
+                                    }
+
+                                }
+
                             }
+
+
 
 
 
