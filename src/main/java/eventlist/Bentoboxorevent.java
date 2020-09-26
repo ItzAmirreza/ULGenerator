@@ -41,13 +41,13 @@ public class Bentoboxorevent implements Listener {
                 .request();
     }
 
-    List<String> worldslist = ULGenerator.getInstance().getConfig().getStringList("disabled-worlds");
-    ConfigurationSection configurationsection = ULGenerator.getInstance().getConfig().getConfigurationSection("generators-settings.generators");
-    String perm = ULGenerator.getInstance().getConfig().getString("generators-settings.permission");
+
 
 
     @EventHandler
     public void onhappen(BlockFromToEvent e) {
+        List<String> worldslist = Utils.worldslist;
+
         if (!(worldslist.contains(e.getBlock().getWorld().getName()))) {
             Location happenloc = e.getBlock().getLocation();
             Material block1 = e.getBlock().getType();
@@ -62,10 +62,12 @@ public class Bentoboxorevent implements Listener {
                 UUID islandowneruuid = api.getIslands().getIslandAt(e.getToBlock().getLocation()).get().getOwner();
                 Optional<Island> islandownerobject = api.getIslands().getIslandAt(e.getToBlock().getLocation());
                 Player islandowner = Bukkit.getPlayer(islandowneruuid);
+
+                String perm = Utils.perm;
                 if (islandowner.hasPermission(perm) || perm == "none") {
                     long islandlevel = getIslandLevel(islandowneruuid, islandownerobject.get().getWorld().toString());
                     Location blockl = new Location(e.getBlock().getWorld(), block1location.getBlockX(), block1location.getBlockY() - 1, block1location.getBlockZ());
-
+                    ConfigurationSection configurationsection = Utils.configurationsection;
                     configurationsection.getKeys(false).forEach(key -> {
                         if (key.equalsIgnoreCase(blockl.getBlock().getType().toString())) {
 

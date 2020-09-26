@@ -26,12 +26,14 @@ public class ulgCommand implements CommandExecutor {
 
                     if (args[0].equalsIgnoreCase("disable")) {
 
-                        ULGenerator.getInstance().getServer().getPluginManager().disablePlugin(ULGenerator.getInstance());
                         player.sendMessage(Utils.color(Utils.pluginprefix + "&cPlugin disabled."));
+                        ULGenerator.getInstance().getServer().getPluginManager().disablePlugin(ULGenerator.getInstance());
+
 
                     } else if (args[0].equalsIgnoreCase("reload")) {
 
                         ULGenerator.getInstance().reloadConfig();
+                        Utils.reloadCF();
                         player.sendMessage(Utils.color(Utils.pluginprefix + "&aConfig has been reloaded."));
 
                     } else {
@@ -46,7 +48,7 @@ public class ulgCommand implements CommandExecutor {
             } else {
                 //doesnt have perm so just show the default introduction message.
 
-                player.sendMessage(Utils.color(Utils.pluginprefix + "&a Under Lava Generator | By Dead_Light - &c ver 1.4"));
+                player.sendMessage(Utils.color(Utils.pluginprefix + "&a Under Lava Generator | By Dead_Light - &c ver 1.6"));
 
             }
 
@@ -69,6 +71,7 @@ public class ulgCommand implements CommandExecutor {
                 } else if (args[0].equalsIgnoreCase("reload")) {
 
                     ULGenerator.getInstance().reloadConfig();
+                    Utils.reloadCF();
                     sender.sendMessage(Utils.color(Utils.pluginprefix + "&aConfig has been reloaded."));
 
                 } else {
